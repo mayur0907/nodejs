@@ -8,17 +8,23 @@ console.log(getProduct(5, 7)); // Output: 35
 
 
 
+const http = require('http');
 
-const express = require('express');
-const app = express();
-const port = 4000;
+const server = http.createServer((req, res) => {
+  // process.exit();
+  console.log(req.url, req.method, req.headers);
+ res.setHeader('Content-Type', 'text/html');
+ res.write('<html>');
+ res.write('<head><title> My First Page</title><head>');
+ res.write('<body><h1>Hello from my Node.js Server!</h1></body>');
+  res.write('</html>');
+  res.end();
 
-app.get('/', (req, res) => {
-  console.log('Mayur');
-  res.send('Mayur');
-});
 
-app.listen(port, () => {
-  console.log(`Server listening at http://localhost:${4000}`);
-});
+
+
+
+}
+);
+server.listen(4000);
 
